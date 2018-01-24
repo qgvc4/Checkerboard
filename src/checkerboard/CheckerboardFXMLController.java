@@ -18,18 +18,34 @@ import javafx.scene.control.Label;
  */
 public class CheckerboardFXMLController implements Initializable {
     
-    @FXML
-    private Label label;
-    
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
-    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void size16Click(ActionEvent event) {
+    }
+
+    @FXML
+    private void size10Click(ActionEvent event) {
+    }
+
+    @FXML
+    private void size8Click(ActionEvent event) {
+    }
+
+    @FXML
+    private void size3Click(ActionEvent event) {
+    }
+
+    @FXML
+    private void defaultColorClick(ActionEvent event) {
+    }
+
+    @FXML
+    private void blueColorClick(ActionEvent event) {
+    }
     
 }
