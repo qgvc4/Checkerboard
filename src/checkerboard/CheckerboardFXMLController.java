@@ -7,10 +7,13 @@ package checkerboard;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -24,9 +27,13 @@ public class CheckerboardFXMLController implements Initializable {
     private Stage stage;
     @FXML
     private AnchorPane anchorPane;
+    @FXML
+    private MenuBar menuBar;
     private static boolean defaultColor = true;
     private static int numCols = 8;
     private static int numRows = 8;
+    private double anchorWidth;
+    private double anchorHeight;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -36,6 +43,15 @@ public class CheckerboardFXMLController implements Initializable {
     public void init(Stage stage) {
         this.stage = stage;
         addCheckerBoard(anchorPane.getWidth(), anchorPane.getHeight());
+        
+        ChangeListener<Number> listener = (ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) -> {
+            anchorWidth = stage.getScene().getWidth();
+            anchorHeight = stage.getScene().getHeight() - menuBar.getHeight();
+            addCheckerBoard(anchorWidth , anchorHeight);
+        };
+        
+        stage.widthProperty().addListener(listener);
+        stage.heightProperty().addListener(listener);       
     }
     
     private void addCheckerBoard(double width, double height) {
