@@ -19,12 +19,13 @@ public class Checkerboard extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("CheckerboardFXML.fxml"));
-        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CheckerboardFXML.fxml"));
+        Parent root = loader.load();
+        CheckerboardFXMLController checkboardController = loader.getController();
         Scene scene = new Scene(root);
-        
         stage.setScene(scene);
         stage.show();
+        checkboardController.init(stage);
     }
 
     /**
